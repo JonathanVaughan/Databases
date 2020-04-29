@@ -1,0 +1,299 @@
+1. SELECT COUNT(name) FROM city WHERE CountryCode= 'usa' 
+answer = 274
+2. SELECT population, AVG(lifeexpectancy) AS average_lifeexpectancy FROM country WHERE CODE='ARG' ;
+population = 37032000 average life expectancy =  75.10000
+3. SELECT Name, MAX(LifeExpectancy) AS HighestLifeExpectancy FROM country WHERE LifeExpectancy IS NOT NULL GROUP BY Name ORDER BY HighestLifeExpectancy DESC LIMIT 5;
+ANDORA = 83.5
+4. SELECT c1.name, c2.name from country c1 LEFT JOIN city c2 ON c1.capital = c2.id WHERE c1.Name = 'Spain';
+Capital = Madrid
+5. 
+SELECT DISTINCT Language FROM country c LEFT JOIN countrylanguage l on c.code=l.countrycode WHERE c.region='Southeast Asia' ;
++---------------+
+| Chinese       |
+| English       |
+| Malay         |
+| Malay-English |
+| Bali          |
+| Banja         |
+| Batakki       |
+| Bugi          |
+| Javanese      |
+| Madura        |
+| Minangkabau   |
+| Sunda         |
+| Khmer         |
+| Tšam          |
+| Vietnamese    |
+| Lao           |
+| Lao-Soung     |
+| Mon-khmer     |
+| Thai          |
+| Burmese       |
+| Chin          |
+| Kachin        |
+| Karen         |
+| Kayah         |
+| Mon           |
+| Rakhine       |
+| Shan          |
+| Dusun         |
+| Iban          |
+| Tamil         |
+| Bicol         |
+| Cebuano       |
+| Hiligaynon    |
+| Ilocano       |
+| Maguindanao   |
+| Maranao       |
+| Pampango      |
+| Pangasinan    |
+| Pilipino      |
+| Waray-waray   |
+| Kuy           |
+| Portuguese    |
+| Man           |
+| Miao          |
+| Muong         |
+| Nung          |
+| Tho           |
++---------------+
+6. SELECT name FROM city WHERE name LIKE 'f%' LIMIT 25;+---------------------------+
+| name                      |
++---------------------------+
+| Fagatogo                  |
+| Florencio Varela          |
+| Formosa                   |
+| Francistown               |
+| Fortaleza                 |
+| Feira de Santana          |
+| Franca                    |
+| Florianópolis             |
+| Foz do Iguaçu             |
+| Ferraz de Vasconcelos     |
+| Francisco Morato          |
+| Franco da Rocha           |
+| Fuenlabrada               |
+| Faridabad                 |
+| Firozabad                 |
+| Farrukhabad-cum-Fatehgarh |
+| Faizabad                  |
+| Fatehpur                  |
+| Firenze                   |
+| Foggia                    |
+| Ferrara                   |
+| Forlì                     |
+| Fukuoka                   |
+| Funabashi                 |
+| Fukuyama                  |
++---------------------------+
+7. SELECT COUNT(name) FROM city WHERE countrycode='chn';
+8. SELECT Name, MIN(Population) AS LowestPopulation FROM country WHERE Population IS NOT NULL GROUP BY Name ORDER BY LowestPopulation ASC LIMIT 7
++----------------------------------------------+------------------+
+| Name                                         | LowestPopulation |
++----------------------------------------------+------------------+
+| French Southern territories                  |                0 |
+| Antarctica                                   |                0 |
+| British Indian Ocean Territory               |                0 |
+| Heard Island and McDonald Islands            |                0 |
+| United States Minor Outlying Islands         |                0 |
+| Bouvet Island                                |                0 |
+| South Georgia and the South Sandwich Islands |                0 |
++----------------------------------------------+------------------+
+9. SELECT COUNT(name) FROM country
++-------------+
+| COUNT(name) |
++-------------+
+|         239 |
++-------------+
+10. SELECT name FROM country ORDER BY population DESC  LIMIT 10 ;
+ysql> +--------------------+
+    -> | name               |
+    -> +--------------------+
+    -> | China              |
+    -> | India              |
+    -> | United States      |
+    -> | Indonesia          |
+    -> | Brazil             |
+    -> | Pakistan           |
+    -> | Russian Federation |
+    -> | Bangladesh         |
+    -> | Japan              |
+    -> | Nigeria            |
+    -> +--------------------+
+11. SELECT name FROM city WHERE countrycode='jpn' ORDER BY population DESC LIMIT 5;
++---------------------+
+| name                |
++---------------------+
+| Tokyo               |
+| Jokohama [Yokohama] |
+| Osaka               |
+| Nagoya              |
+| Sapporo             |
++---------------------+
+12. 
+SELECT name, code FROM country WHERE HeadOfState="Elisabeth II";
++----------------------------------------------+------+
+| name                                         | code |
++----------------------------------------------+------+
+| Anguilla                                     | AIA  |
+| Antigua and Barbuda                          | ATG  |
+| Australia                                    | AUS  |
+| Bahamas                                      | BHS  |
+| Belize                                       | BLZ  |
+| Bermuda                                      | BMU  |
+| Barbados                                     | BRB  |
+| Canada                                       | CAN  |
+| Cocos (Keeling) Islands                      | CCK  |
+| Cook Islands                                 | COK  |
+| Christmas Island                             | CXR  |
+| Cayman Islands                               | CYM  |
+| Falkland Islands                             | FLK  |
+| United Kingdom                               | GBR  |
+| Gibraltar                                    | GIB  |
+| Grenada                                      | GRD  |
+| Heard Island and McDonald Islands            | HMD  |
+| British Indian Ocean Territory               | IOT  |
+| Jamaica                                      | JAM  |
+| Saint Kitts and Nevis                        | KNA  |
+| Saint Lucia                                  | LCA  |
+| Montserrat                                   | MSR  |
+| Norfolk Island                               | NFK  |
+| Niue                                         | NIU  |
+| New Zealand                                  | NZL  |
+| Pitcairn                                     | PCN  |
+| Papua New Guinea                             | PNG  |
+| South Georgia and the South Sandwich Islands | SGS  |
+| Saint Helena                                 | SHN  |
+| Solomon Islands                              | SLB  |
+| Turks and Caicos Islands                     | TCA  |
+| Tokelau                                      | TKL  |
+| Tuvalu                                       | TUV  |
+| Saint Vincent and the Grenadines             | VCT  |
+| Virgin Islands, British                      | VGB  |
++----------------------------------------------+------+
+13. SELECT Name, Population/SurfaceArea AS PopulationDensity FROM country ORDER BY PopulationDensity DESC LIMIT 10;
++-------------------------------+-------------------+
+| Name                          | PopulationDensity |
++-------------------------------+-------------------+
+| Macao                         |        26277.7778 |
+| Monaco                        |        22666.6667 |
+| Hong Kong                     |         6308.8372 |
+| Singapore                     |         5771.8447 |
+| Gibraltar                     |         4166.6667 |
+| Holy See (Vatican City State) |         2500.0000 |
+| Bermuda                       |         1226.4151 |
+| Malta                         |         1203.1646 |
+| Maldives                      |          959.7315 |
+| Bangladesh                    |          896.9222 |
++-------------------------------+-------------------+
+14. SELECT DISTINCT language from countrylanguage;
+| Seselwa                   |
+| Gorane                    |
+| Hadjarai                  |
+| Kanem-bornu               |
+| Mayo-kebbi                |
+| Ouaddai                   |
+| Tandjile                  |
+| Ane                       |
+| Kabyé                     |
+| Kotokoli                  |
+| Moba                      |
+| Naudemba                  |
+| Watyi                     |
+| Kuy                       |
+| Tokelau                   |
+| Arabic-French             |
+| Arabic-French-English     |
+| Ami                       |
+| Atayal                    |
+| Min                       |
+| Paiwan                    |
+| Chaga and Pare            |
+| Gogo                      |
+| Ha                        |
+| Haya                      |
+| Hehet                     |
+| Luguru                    |
+| Makonde                   |
+| Nyakusa                   |
+| Nyamwesi                  |
+| Shambala                  |
+| Acholi                    |
+| Ganda                     |
+| Gisu                      |
+| Kiga                      |
+| Lango                     |
+| Lugbara                   |
+| Nkole                     |
+| Soga                      |
+| Teso                      |
+| Tagalog                   |
+| Karakalpak                |
+| Goajiro                   |
+| Warrau                    |
+| Man                       |
+| Muong                     |
+| Nung                      |
+| Tho                       |
+| Bislama                   |
+| Futuna                    |
+| Wallis                    |
+| Samoan-English            |
+| Soqutri                   |
+| Northsotho                |
+| Southsotho                |
+| Venda                     |
+| Xhosa                     |
+| Bemba                     |
+| Chewa                     |
+| Lozi                      |
+| Nsenga                    |
++---------------------------+
+15. SELECT name, gnp FROM country ORDER BY gnp DESC LIMIT 10;
++----------------+------------+
+| name           | gnp        |
++----------------+------------+
+| United States  | 8510700.00 |
+| Japan          | 3787042.00 |
+| Germany        | 2133367.00 |
+| France         | 1424285.00 |
+| United Kingdom | 1378330.00 |
+| Italy          | 1161755.00 |
+| China          |  982268.00 |
+| Brazil         |  776739.00 |
+| Canada         |  598862.00 |
+| Spain          |  553233.00 |
++----------------+------------+
+16. SELECT name, surfacearea FROM country ORDER BY surfacearea DESC LIMIT 10;
++--------------------+-------------+
+| name               | surfacearea |
++--------------------+-------------+
+| Russian Federation | 17075400.00 |
+| Antarctica         | 13120000.00 |
+| Canada             |  9970610.00 |
+| China              |  9572900.00 |
+| United States      |  9363520.00 |
+| Brazil             |  8547403.00 |
+| Australia          |  7741220.00 |
+| India              |  3287263.00 |
+| Argentina          |  2780400.00 |
+| Kazakstan          |  2724900.00 |
++--------------------+-------------+
+17. SELECT c.name, language, percentage FROM country c JOIN countrylanguage l ON c.code=l.countrycode WHERE language='french' AND percentage>=50;
++--------+----------+------------+
+| name   | language | percentage |
++--------+----------+------------+
+| France | French   |       93.6 |
++--------+----------+------------+
+18 SELECT Name, MIN(LifeExpectancy) AS MINLifeExpectancy FROM country WHERE LifeExpectancy IS NOT NULL GROUP BY Name ORDER BY MINLifeExpectancy ASC
+ LIMIT 5;
++------------+-------------------+
+| Name       | MINLifeExpectancy |
++------------+-------------------+
+| Zambia     |              37.2 |
+| Mozambique |              37.5 |
+| Malawi     |              37.6 |
+| Zimbabwe   |              37.8 |
+| Angola     |              38.3 |
++------------+-------------------+
+19.
